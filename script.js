@@ -1,0 +1,135 @@
+const burger = document.querySelector(".burger");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+if (burger && mobileMenu) {
+  burger.addEventListener("click", () => {
+    const isOpen = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!isOpen));
+    mobileMenu.hidden = isOpen;
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      burger.setAttribute("aria-expanded", "false");
+      mobileMenu.hidden = true;
+    });
+  });
+}
+
+const stepTabs = document.querySelectorAll(".steps__tab");
+const stepPanels = document.querySelectorAll(".steps__panel");
+
+stepTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const index = tab.dataset.step;
+
+    stepTabs.forEach((item) => {
+      item.classList.toggle("active", item.dataset.step === index);
+      item.setAttribute("aria-selected", String(item.dataset.step === index));
+    });
+
+    stepPanels.forEach((panel) => {
+      panel.classList.toggle("active", panel.dataset.panel === index);
+    });
+  });
+});
+
+let autoStep = 0;
+setInterval(() => {
+  if (stepTabs.length === 0) return;
+  autoStep = (autoStep + 1) % stepTabs.length;
+  stepTabs[autoStep].click();
+}, 7000);
+
+const modal = document.getElementById("callbackModal");
+const modalTriggers = document.querySelectorAll('[data-modal="callback"]');
+const modalCloseElements = modal?.querySelectorAll("[data-close]") ?? [];
+
+function openModal() {
+  if (!modal) return;
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  if (!modal) return;
+  modal.hidden = true;
+  document.body.style.overflow = "";
+}
+
+modalTriggers.forEach((trigger) => trigger.addEventListener("click", openModal));
+modalCloseElements.forEach((el) => el.addEventListener("click", closeModal));
+
+function getFormPayload(form) {
+  const data = {};
+  new FormData(form).forEach((value, key) => {
+    if (key !== "consent") {
+      data[key] = String(value).trim();
+    }
+  });
+  return data;
+}
+
+async function sendToGoogleSheets(formType, data) {
+  const url = window.GOOGLE_SHEETS_URL;
+  if (!url) {
+    return { ok: true, skipped: true };
+  }
+
+  const body = new URLSearchParams({
+    formType,
+    sentAt: new Date().toISOString(),
+    ...data,
+  });
+
+  await fetch(url, {
+    method: "POST",
+    mode: "no-cors",
+    body,
+  });
+
+  return { ok: true };
+}
+
+function handleFormSubmit(form, successSelector, formType) {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitBtn = form.querySelector('[type="submit"]');
+    const success = form.querySelector(successSelector);
+    const error = form.querySelector(".form-error");
+
+    if (success) success.hidden = true;
+    if (error) error.hidden = true;
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      await sendToGoogleSheets(formType, getFormPayload(form));
+
+      if (success) success.hidden = false;
+      form.reset();
+
+      if (form.id === "callbackForm") {
+        setTimeout(closeModal, 1500);
+      }
+    } catch (err) {
+      if (error) {
+        error.hidden = false;
+        error.textContent =
+          "Не удалось отправить заявку. Попробуйте позже или позвоните нам.";
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+}
+
+const contactForm = document.getElementById("contactForm");
+const callbackForm = document.getElementById("callbackForm");
+
+if (contactForm) handleFormSubmit(contactForm, ".form-success", "contact");
+if (callbackForm) handleFormSubmit(callbackForm, ".form-success", "callback");
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModal();
+});
