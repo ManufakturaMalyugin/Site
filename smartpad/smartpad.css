@@ -124,8 +124,6 @@ a {
 
 .spad__lang-select:focus {
   outline: none;
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px var(--red-soft);
 }
 
 .spad__lang-select:focus-visible {
