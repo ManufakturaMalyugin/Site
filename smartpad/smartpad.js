@@ -1,4 +1,8 @@
 (function () {
+  if (document.documentElement.lang !== "ru") {
+    return;
+  }
+
   function fixTypography(text) {
     return text
       .replace(/\bдля /gi, "для\u00A0")
