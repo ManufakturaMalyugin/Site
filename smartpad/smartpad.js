@@ -1,4 +1,15 @@
 (function () {
+  document.querySelectorAll(".spad__lang-select").forEach((select) => {
+    select.addEventListener("change", () => {
+      const url = select.value;
+      if (url) {
+        location.href = url;
+      }
+    });
+  });
+})();
+
+(function () {
   if (document.documentElement.lang !== "ru") {
     return;
   }

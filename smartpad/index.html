@@ -26,10 +26,13 @@
         <img src="https://solorussia.com/dist/img/logo.svg" alt="SOLO — на сайт solorussia.com">
       </a>
       <div class="spad__header-actions">
-        <nav class="spad__lang" aria-label="Язык">
-          <a class="spad__lang-link is-active" href="./" hreflang="ru" lang="ru" aria-current="page">RU</a>
-          <a class="spad__lang-link" href="en/" hreflang="en" lang="en">EN</a>
-        </nav>
+        <label class="spad__lang-ui">
+          <span class="spad__lang-label">Язык</span>
+          <select class="spad__lang-select" id="spadLang" aria-label="Язык">
+            <option value="./" selected lang="ru">RU</option>
+            <option value="en/" lang="en">EN</option>
+          </select>
+        </label>
         <a class="spad__header-shop" href="https://solorussia.com/" target="_blank" rel="noopener noreferrer">В магазин</a>
       </div>
     </div>
