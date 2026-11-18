@@ -1,7 +1,12 @@
 (function () {
+  function normalizeLang(code) {
+    const lang = String(code || "").trim().toLowerCase();
+    return lang === "en" ? "en" : "ru";
+  }
+
   function isEnPage() {
-    const path = location.pathname.replace(/\\/g, "/");
-    if (/\/smartpad\/en(?:\/|$)/i.test(path)) {
+    const path = location.pathname.replace(/\\/g, "/").toLowerCase();
+    if (/\/smartpad\/en(?:\/|$)/.test(path)) {
       return true;
     }
     if (location.protocol === "file:") {
@@ -14,31 +19,42 @@
     return isEnPage() ? "en" : "ru";
   }
 
+  function smartpadRoot() {
+    const path = location.pathname.replace(/\\/g, "/");
+    const marker = "/smartpad";
+    const idx = path.toLowerCase().indexOf(marker);
+    if (idx === -1) {
+      return null;
+    }
+    return path.slice(0, idx + marker.length);
+  }
+
   function langHref(code) {
+    const lang = normalizeLang(code);
     const onEn = isEnPage();
 
     if (location.protocol === "file:") {
-      if (code === "ru") {
+      if (lang === "ru") {
         return onEn ? "../index.html" : "index.html";
       }
       return onEn ? "index.html" : "en/index.html";
     }
 
-    if (code === "ru") {
-      return onEn ? "../" : "./";
-    }
-    return onEn ? "./" : "en/";
+    const root = smartpadRoot();
+    const path = lang === "en" ? `${root || "/smartpad"}/en/` : `${root || "/smartpad"}/`;
+    return new URL(path, location.origin).href;
   }
 
   document.querySelectorAll(".spad__lang-select").forEach((select) => {
     select.value = pageLang();
 
     select.addEventListener("change", () => {
-      const code = select.value;
-      if (!code || code === pageLang()) {
+      const lang = normalizeLang(select.value);
+      if (lang === pageLang()) {
+        select.value = pageLang();
         return;
       }
-      location.assign(langHref(code));
+      location.assign(langHref(lang));
     });
   });
 })();
