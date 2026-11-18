@@ -1,5 +1,28 @@
 (function () {
+  const pageLang = document.documentElement.lang === "en" ? "en" : "ru";
+
+  function isEnPage() {
+    const path = location.pathname.replace(/\\/g, "/");
+    return /\/smartpad\/en(?:\/|$)/i.test(path) || /\/en\/index\.html$/i.test(path);
+  }
+
+  function langUrl(code) {
+    if (location.protocol === "file:") {
+      const onEn = isEnPage();
+      if (code === "ru") {
+        return onEn ? "../index.html" : "index.html";
+      }
+      return onEn ? "index.html" : "en/index.html";
+    }
+    return code === "en" ? "/smartpad/en/" : "/smartpad/";
+  }
+
   document.querySelectorAll(".spad__lang-select").forEach((select) => {
+    select.querySelectorAll("option[data-lang]").forEach((option) => {
+      option.value = langUrl(option.dataset.lang);
+    });
+    select.value = langUrl(pageLang);
+
     select.addEventListener("change", () => {
       const url = select.value;
       if (url) {
