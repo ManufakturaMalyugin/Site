@@ -332,6 +332,16 @@ a {
   letter-spacing: -0.02em;
 }
 
+.spad__br-desktop {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .spad__br-desktop {
+    display: block;
+  }
+}
+
 .spad__p {
   margin: 0;
   max-width: 42rem;
