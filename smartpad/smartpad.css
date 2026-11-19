@@ -432,6 +432,14 @@ a {
   color: var(--red);
 }
 
+.spad__story-row--pad-how .spad__card-title {
+  color: var(--muted);
+}
+
+.spad__story-row--pad-how .spad__card-title::first-letter {
+  color: var(--muted);
+}
+
 .spad__card-text {
   margin: 0;
   font-size: 14px;
