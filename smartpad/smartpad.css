@@ -434,16 +434,56 @@ a {
   font-weight: 600;
 }
 
-.spad__disclaimer {
-  margin: clamp(2.5rem, 5vw, 3.25rem) 0 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--muted);
+#about-disclaimer {
+  scroll-margin-top: calc(88px + 1rem);
 }
 
-.spad__disclaimer sup {
+.spad__notice {
+  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+  padding: clamp(1.15rem, 2.5vw, 1.5rem) clamp(1.15rem, 3vw, 1.65rem);
+  border-radius: var(--radius);
+  border: 1px solid rgba(254, 81, 73, 0.22);
+  border-left: 4px solid var(--red);
+  background:
+    linear-gradient(135deg, rgba(254, 81, 73, 0.07), rgba(255, 243, 241, 0.95)),
+    #fff;
+  box-shadow: 0 12px 40px rgba(254, 81, 73, 0.06);
+}
+
+.spad__notice-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.65rem;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.spad__notice-icon {
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: var(--red-soft);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='none' stroke='%23fe5149' stroke-width='1.5'/%3E%3Cpath fill='%23fe5149' d='M7.25 4.5h1.5v1.5h-1.5zm0 2.75h1.5v4.5h-1.5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+}
+
+.spad__notice-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.spad__notice-mark {
+  margin-right: 0.2em;
   color: var(--red);
   font-weight: 700;
 }
