@@ -536,6 +536,10 @@ a {
     max-width: none;
   }
 
+  .spad__story-row--pad-how.spad__story-row--split {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+
   .spad__story-row--pad-how .spad__figure--photo {
     align-self: start;
     position: sticky;
@@ -580,7 +584,6 @@ a {
   }
 
   .spad__story-row--pad-how .spad__figure--photo {
-    order: -1;
     margin-bottom: clamp(1.25rem, 4vw, 2rem);
     position: static;
   }
