@@ -96,10 +96,106 @@
     <section class="spad__section spad__section--soft reveal" id="video">
       <div class="spad__wrap spad__video-block">
         <p class="spad__eyebrow">Video</p>
-        <div class="spad__video-placeholder" role="status" aria-label="Video coming soon">
-          <span class="spad__video-play" aria-hidden="true"></span>
-          <p class="spad__video-caption">Video will be added soon</p>
+        <div class="spad__video-frame">
+          <video
+            class="spad__video"
+            controls
+            playsinline
+            preload="metadata"
+            title="Smart Pad — SOLO half-shoes"
+          >
+            <source src="../images/draft_2.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
         </div>
+      </div>
+    </section>
+
+    <section class="spad__section spad__section--article reveal" id="about" aria-labelledby="about-title">
+      <div class="spad__wrap spad__article spad__article--media">
+        <header class="spad__article-head">
+          <h2 class="spad__h2" id="about-title">
+            SOLO Smart Pad: half-shoes with an&nbsp;anatomical pad for&nbsp;comfortable training<sup class="spad__ref"><a href="#about-disclaimer">*</a></sup>
+          </h2>
+        </header>
+
+        <div class="spad__prose">
+          <p>In rhythmic gymnastics, the feet are under serious strain every day. Relevés, turns, jumps and balances constantly load the forefoot, which bears a large share of body weight.</p>
+          <p>When these movements are repeated many times, load can concentrate on specific areas, causing fatigue, discomfort, pain and overuse injuries.</p>
+        </div>
+
+        <div class="spad__story-row spad__story-row--split spad__article-part">
+          <div class="spad__prose">
+            <p>To make training more comfortable, SOLO developed Smart Pad&nbsp;— half-shoes with a&nbsp;built-in anatomical pad.</p>
+          </div>
+          <figure class="spad__figure">
+            <picture>
+              <source srcset="../images/article/pad-cutaway.webp?v=1" type="image/webp">
+              <img
+                src="../images/article/pad-cutaway.png?v=1"
+                alt="Anatomical pad inside Smart Pad half-shoes"
+                width="900"
+                height="506"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
+            <figcaption>Built-in pad in Smart Pad half-shoes</figcaption>
+          </figure>
+        </div>
+
+        <div class="spad__article-part">
+          <h3 class="spad__h3">How does the anatomical pad work?</h3>
+          <div class="spad__story-row spad__story-row--split spad__story-row--figure-first">
+            <figure class="spad__figure">
+              <picture>
+                <source srcset="../images/article/foot-anatomy.webp?v=1" type="image/webp">
+                <img
+                  src="../images/article/foot-anatomy.png?v=1"
+                  alt="Diagram of pad placement in the forefoot"
+                  width="900"
+                  height="494"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <figcaption>Pad positioned behind the metatarsal heads</figcaption>
+            </figure>
+            <div class="spad__prose">
+              <p>Inside Smart Pad is a supportive insert, a metatarsal (anatomical) pad placed directly behind the heads of the metatarsal bones.</p>
+              <p>It performs three main functions:</p>
+            </div>
+          </div>
+          <ul class="spad__list">
+            <li>
+              <strong>Supports the arch.</strong>
+              Provides additional support for the transverse arch of the forefoot.
+            </li>
+            <li>
+              <strong>Distributes load.</strong>
+              Helps spread pressure over a larger area so it does not focus on a few points.
+            </li>
+            <li>
+              <strong>Reduces pressure on vulnerable areas.</strong>
+              Helps lessen local pressure around the metatarsal heads, especially the second and third.
+            </li>
+          </ul>
+          <p class="spad__prose spad__prose--after-list">In simple terms, the pad helps distribute load across the forefoot more evenly, without significantly limiting its mobility.</p>
+        </div>
+
+        <div class="spad__article-part">
+          <h3 class="spad__h3">What does Smart Pad offer gymnasts?</h3>
+          <div class="spad__prose">
+            <p>In preliminary observations, athletes reported a more comfortable base of support, a sense of stability in turns and balances, and a subjective feeling of lightness in relevé.</p>
+            <p>These observations are not yet proof of product effectiveness in clinical trials, but they indicate what advantages a gymnast may feel when using this design.</p>
+            <p>SOLO Smart Pad is made for additional forefoot support and more comfortable execution of familiar training elements.</p>
+          </div>
+        </div>
+
+        <p class="spad__disclaimer" id="about-disclaimer">
+          <sup>*</sup>
+          Smart Pad half-shoes are not intended to treat injuries or replace professional injury prevention on their own. They do not substitute proper technique, strength training or recovery. If pain is recurring or severe, consult a specialist.
+        </p>
       </div>
     </section>
   </main>
