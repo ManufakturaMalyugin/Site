@@ -402,8 +402,45 @@ a {
   margin-bottom: 0;
 }
 
+.spad__story-copy {
+  min-width: 0;
+}
+
+.spad__cards {
+  display: grid;
+  gap: 12px;
+  margin-top: clamp(0.65rem, 1.75vw, 1rem);
+}
+
+.spad__card {
+  padding: clamp(0.9rem, 2vw, 1.1rem) clamp(1rem, 2.2vw, 1.2rem);
+  border-radius: 16px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.spad__card-title {
+  margin: 0 0 0.45rem;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.spad__card-title::first-letter {
+  color: var(--red);
+}
+
+.spad__card-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 .spad__prose--after-list {
-  margin-top: 1.25rem;
+  margin-top: 1.35rem;
 }
 
 .spad__list {
@@ -565,6 +602,10 @@ a {
 
   .spad__story-row--figure-first .spad__figure {
     order: -1;
+  }
+
+  .spad__story-row--split .spad__figure--side {
+    margin-bottom: clamp(1.5rem, 5vw, 2.25rem);
   }
 }
 
