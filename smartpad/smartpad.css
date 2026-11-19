@@ -528,11 +528,7 @@ a {
   .spad__story-row--split {
     grid-template-columns: 1.05fr 0.95fr;
     gap: clamp(2rem, 5vw, 4rem);
-    align-items: stretch;
-  }
-
-  .spad__story-row--figure-first.spad__story-row--split {
-    grid-template-columns: 0.95fr 1.05fr;
+    align-items: start;
   }
 
   .spad__story-row--split .spad__prose--col {
@@ -540,26 +536,10 @@ a {
     max-width: none;
   }
 
-  .spad__figure--side {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-  }
-
-  .spad__figure--side picture {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--cream);
-  }
-
-  .spad__figure--side img {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-    object-fit: contain;
+  .spad__story-row--pad-how .spad__figure--photo {
+    align-self: start;
+    position: sticky;
+    top: calc(88px + 1rem);
   }
 }
 
@@ -569,6 +549,16 @@ a {
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.spad__figure--photo {
+  background: var(--blush);
+}
+
+.spad__figure--photo picture,
+.spad__figure--photo img {
+  display: block;
+  line-height: 0;
 }
 
 .spad__figure img {
