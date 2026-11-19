@@ -1,4 +1,23 @@
 (function () {
+  function startVideo(video) {
+    video.muted = true;
+    video.defaultMuted = true;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+  }
+
+  document.querySelectorAll(".spad__video").forEach((video) => {
+    if (video.readyState >= 2) {
+      startVideo(video);
+    } else {
+      video.addEventListener("loadeddata", () => startVideo(video), { once: true });
+    }
+  });
+})();
+
+(function () {
   function normalizeLang(code) {
     const lang = String(code || "").trim().toLowerCase();
     return lang === "en" ? "en" : "ru";
