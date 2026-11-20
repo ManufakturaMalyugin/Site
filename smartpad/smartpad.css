@@ -433,7 +433,7 @@ a {
   border-radius: var(--radius);
   overflow: hidden;
   background: #0a0a0a;
-  border: 1px solid var(--line);
+  border: 1px solid var(--red);
   box-shadow: var(--shadow);
 }
 
