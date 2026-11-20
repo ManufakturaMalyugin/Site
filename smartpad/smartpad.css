@@ -901,22 +901,65 @@ a {
   background: #fff;
 }
 
-.spad__closing-note {
-  margin: clamp(1.15rem, 2.5vw, 1.5rem) 0 0;
+.spad__figure--compact {
+  max-width: min(100%, 22rem);
+  margin-inline: auto;
+}
+
+.spad__figure--compact img {
+  width: 100%;
+  height: auto;
+  filter: contrast(1.06) saturate(1.04);
+}
+
+@media (min-width: 769px) {
+  .spad__story-row--split > .spad__figure--compact {
+    justify-self: center;
+    width: 100%;
+  }
+}
+
+.spad__info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  margin: clamp(1.25rem, 2.8vw, 1.75rem) 0 0;
+  padding: clamp(0.95rem, 2vw, 1.15rem) clamp(1rem, 2.2vw, 1.25rem);
+  border-radius: 14px;
+  background: #f5f4f4;
+  border: 1px solid var(--line);
+}
+
+.spad__info-icon {
+  display: grid;
+  place-items: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  margin-top: 0.05rem;
+  border-radius: 50%;
+  background: var(--muted);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.spad__info-text {
+  margin: 0;
   font-size: 13px;
   line-height: 1.55;
   color: var(--muted);
+  text-wrap: pretty;
 }
 
 @media (min-width: 860px) {
-  .spad__closing .spad__split-note {
-    align-items: stretch;
-  }
-
   .spad__closing .spad__callout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: auto;
+    align-self: start;
   }
 }
 
