@@ -26,3 +26,11 @@
     transition: none;
   }
 }
+
+/* Avoid blank mobile screens: never hide whole page sections with opacity. */
+@media (max-width: 768px) {
+  .spad__section.reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

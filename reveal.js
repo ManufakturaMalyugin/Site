@@ -12,6 +12,11 @@
     return;
   }
 
+  function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -21,10 +26,14 @@
         }
       });
     },
-    // threshold 0: show as soon as the block enters view.
-    // Large sections (e.g. foot-guide) never reached 10% visible soon enough.
-    { threshold: 0, rootMargin: "0px 0px -48px 0px" }
+    { threshold: 0, rootMargin: "64px 0px -32px 0px" }
   );
 
-  reveals.forEach((el) => observer.observe(el));
+  reveals.forEach((el) => {
+    if (isInViewport(el)) {
+      el.classList.add("is-visible");
+      return;
+    }
+    observer.observe(el);
+  });
 })();
