@@ -1,0 +1,207 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ml-red: #fe5149;
+  --ml-red-soft: rgba(254, 81, 73, 0.12);
+  --ml-cream: #fffcfb;
+  --ml-blush: #fff3f1;
+  --ml-text: #111;
+  --ml-muted: #5c5c5c;
+  --ml-line: rgba(0, 0, 0, 0.08);
+  --ml-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.ml {
+  margin: 0;
+  min-height: 100vh;
+  font-family: AvenirNextCyr, Arial, sans-serif;
+  color: var(--ml-text);
+  background: var(--ml-cream);
+  text-wrap: pretty;
+}
+
+.ml__bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(254, 81, 73, 0.16), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255, 150, 140, 0.18), transparent 55%),
+    linear-gradient(180deg, var(--ml-blush) 0%, var(--ml-cream) 45%, #fff 100%);
+}
+
+.ml__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image:
+    linear-gradient(30deg, #111 1px, transparent 1px),
+    linear-gradient(150deg, #111 1px, transparent 1px);
+  background-size: 42px 72px;
+  pointer-events: none;
+}
+
+.ml__shell {
+  width: min(100% - 32px, 26rem);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vw, 4rem) 0 calc(2.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.ml__profile {
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+  margin-bottom: clamp(1.75rem, 5vw, 2.25rem);
+  text-align: center;
+}
+
+.ml__avatar {
+  display: grid;
+  place-items: center;
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 50%;
+  background: var(--ml-red);
+  box-shadow: 0 16px 40px rgba(254, 81, 73, 0.28);
+  animation: ml-rise 0.7s var(--ml-ease) both;
+}
+
+.ml__avatar img {
+  width: 68%;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.ml__brand {
+  margin: 0;
+  font-size: clamp(1.75rem, 6vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  animation: ml-rise 0.7s var(--ml-ease) 0.06s both;
+}
+
+.ml__lead {
+  margin: 0;
+  max-width: 18rem;
+  color: var(--ml-muted);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  animation: ml-rise 0.7s var(--ml-ease) 0.12s both;
+}
+
+.ml__links {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ml__link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 3.55rem;
+  padding: 0.7rem 1rem 0.7rem 0.75rem;
+  border-radius: 1.15rem;
+  background: #fff;
+  border: 1px solid var(--ml-line);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.045);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 0.22s var(--ml-ease),
+    box-shadow 0.22s var(--ml-ease),
+    border-color 0.22s;
+  animation: ml-rise 0.7s var(--ml-ease) both;
+}
+
+.ml__link:nth-child(1) { animation-delay: 0.16s; }
+.ml__link:nth-child(2) { animation-delay: 0.2s; }
+.ml__link:nth-child(3) { animation-delay: 0.24s; }
+.ml__link:nth-child(4) { animation-delay: 0.28s; }
+.ml__link:nth-child(5) { animation-delay: 0.32s; }
+.ml__link:nth-child(6) { animation-delay: 0.36s; }
+.ml__link:nth-child(7) { animation-delay: 0.4s; }
+
+.ml__link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(254, 81, 73, 0.22);
+  box-shadow: 0 14px 34px rgba(254, 81, 73, 0.1);
+}
+
+.ml__link:active {
+  transform: translateY(0);
+}
+
+.ml__icon {
+  display: grid;
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  border-radius: 50%;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.ml__icon--site { background: var(--ml-red); }
+.ml__icon--tg { background: #2aabee; }
+.ml__icon--max { background: linear-gradient(135deg, #6c5ce7, #4b7bec); }
+.ml__icon--vk { background: #0077ff; }
+.ml__icon--rutube { background: #1a1a1a; }
+.ml__icon--ig { background: linear-gradient(135deg, #f58529, #dd2a7b 50%, #8134af); }
+
+.ml__label {
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.ml__note {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ml-muted);
+}
+
+.ml__chev {
+  color: #b0b0b0;
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@keyframes ml-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml__avatar,
+  .ml__brand,
+  .ml__lead,
+  .ml__link {
+    animation: none;
+  }
+
+  .ml__link:hover {
+    transform: none;
+  }
+}
