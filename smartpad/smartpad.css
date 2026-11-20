@@ -823,22 +823,42 @@ a {
 
 @media (max-width: 768px) {
   .spad__chain {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.65rem 0.35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    counter-reset: spad-chain;
   }
 
   .spad__chain > li {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: none;
+    width: 100%;
   }
 
   .spad__chain > li > span {
-    padding: 0.75em 0.45em;
-    font-size: 0.9rem;
+    width: 100%;
+    padding: 0.8em 0.9em;
+    font-size: 0.95rem;
+  }
+
+  .spad__chain > li > span::before {
+    counter-increment: spad-chain;
+    content: counter(spad-chain) " · ";
+    color: var(--red);
+    font-weight: 700;
   }
 
   .spad__chain > li:not(:last-child)::after {
-    display: none;
+    display: block;
+    width: 2px;
+    height: 0.9rem;
+    margin: 0.35rem 0;
+    background: var(--red);
+    opacity: 0.55;
+    border-radius: 1px;
   }
 }
 
