@@ -64,7 +64,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
 }
 
 .spad__logo img {
@@ -72,11 +72,47 @@ a {
   height: auto;
 }
 
+.spad__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.spad__nav a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.spad__nav a:hover {
+  color: var(--text);
+}
+
+.spad__nav-accent {
+  color: var(--red) !important;
+}
+
+.spad__nav-accent:hover {
+  color: var(--red-hover) !important;
+}
+
 .spad__header-actions {
   display: flex;
   align-items: center;
   gap: clamp(8px, 2vw, 14px);
   flex-shrink: 0;
+}
+
+#about,
+#video,
+#contacts {
+  scroll-margin-top: calc(88px + 1rem);
 }
 
 .spad__lang-ui {
@@ -659,18 +695,20 @@ a {
 }
 
 .spad__guide-head--compact .spad__h2 {
-  margin-bottom: 0;
+  margin-bottom: 0.55rem;
+}
+
+.spad__guide-deck {
+  margin: 0;
+  max-width: 38rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .spad__article-part--flush {
   margin-top: 0;
-}
-
-.spad__guide-lead {
-  margin: 0 0 1.15rem;
-  color: var(--muted);
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-  line-height: 1.55;
 }
 
 @media (min-width: 769px) {
@@ -1054,6 +1092,27 @@ a {
 }
 
 @media (max-width: 960px) {
+  .spad__header-inner {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .spad__nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 0.85rem;
+    padding-bottom: 2px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .spad__nav::-webkit-scrollbar {
+    display: none;
+  }
+
   .spad__hero-grid {
     grid-template-columns: 1fr;
     gap: clamp(1.5rem, 4vw, 2.5rem);
@@ -1078,11 +1137,18 @@ a {
   }
 
   .spad__section--hero {
-    padding-top: calc(80px + clamp(1.25rem, 4vw, 2.5rem));
+    padding-top: calc(112px + clamp(1.25rem, 4vw, 2.5rem));
   }
 
   .spad__contacts-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  #about,
+  #video,
+  #contacts,
+  #foot-guide {
+    scroll-margin-top: calc(112px + 1rem);
   }
 }
 
@@ -1121,7 +1187,7 @@ a {
   }
 
   .spad__section--hero {
-    padding-top: calc(72px + clamp(1rem, 5vw, 1.75rem));
+    padding-top: calc(104px + clamp(1rem, 5vw, 1.75rem));
     padding-bottom: 2rem;
   }
 
