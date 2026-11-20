@@ -893,7 +893,11 @@ a {
 .spad__media-row {
   display: grid;
   gap: 14px;
-  margin-top: clamp(1.25rem, 3vw, 1.75rem);
+  margin-top: clamp(0.35rem, 1vw, 0.65rem);
+}
+
+.spad__media-row + .spad__prose--after-media {
+  margin-top: clamp(1.35rem, 3vw, 2rem);
 }
 
 @media (min-width: 700px) {
@@ -904,10 +908,9 @@ a {
   }
 
   .spad__media-row .spad__figure img {
-    aspect-ratio: 4 / 3;
-    object-fit: contain;
-    object-position: center;
-    background: #fff;
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
