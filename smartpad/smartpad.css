@@ -227,8 +227,16 @@ a {
   align-items: center;
 }
 
-.spad__hero-copy .spad__eyebrow {
+.spad__hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
   margin-bottom: 0.75rem;
+}
+
+.spad__hero-badges .spad__eyebrow {
+  margin: 0;
 }
 
 .spad__eyebrow {
