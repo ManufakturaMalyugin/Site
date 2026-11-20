@@ -823,42 +823,42 @@ a {
 
 @media (max-width: 768px) {
   .spad__chain {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    counter-reset: spad-chain;
+    display: block;
+    margin: 0.35rem 0 1.1rem;
+    color: var(--muted);
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.55;
   }
 
   .spad__chain > li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: inline;
     flex: none;
-    width: 100%;
+    min-width: 0;
   }
 
   .spad__chain > li > span {
-    width: 100%;
-    padding: 0.8em 0.9em;
-    font-size: 0.95rem;
-  }
-
-  .spad__chain > li > span::before {
-    counter-increment: spad-chain;
-    content: counter(spad-chain) " · ";
-    color: var(--red);
-    font-weight: 700;
+    display: inline;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    font-size: inherit;
+    font-weight: 400;
+    color: inherit;
+    text-align: left;
   }
 
   .spad__chain > li:not(:last-child)::after {
-    display: block;
-    width: 2px;
-    height: 0.9rem;
-    margin: 0.35rem 0;
-    background: var(--red);
-    opacity: 0.55;
-    border-radius: 1px;
+    content: " — ";
+    width: auto;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+    background: none;
+    opacity: 1;
+    color: var(--muted);
   }
 }
 
