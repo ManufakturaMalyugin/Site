@@ -21,7 +21,9 @@
         }
       });
     },
-    { threshold: 0.1, rootMargin: "0px 0px -6% 0px" }
+    // threshold 0: show as soon as the block enters view.
+    // Large sections (e.g. foot-guide) never reached 10% visible soon enough.
+    { threshold: 0, rootMargin: "0px 0px -48px 0px" }
   );
 
   reveals.forEach((el) => observer.observe(el));
