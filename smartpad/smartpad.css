@@ -846,21 +846,10 @@ a {
   object-fit: cover;
 }
 
-.spad__mood-quote {
-  margin: 0;
-  padding: clamp(1.25rem, 3vw, 1.75rem);
-  border-radius: var(--radius);
-  background: var(--blush);
-  border: 1px solid var(--line);
-}
-
-.spad__mood-quote p {
-  margin: 0;
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-  line-height: 1.55;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: 0;
+.spad__mood-callout {
+  margin-top: 0;
+  align-self: center;
+  height: auto;
 }
 
 .spad__stat {
