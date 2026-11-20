@@ -820,7 +820,7 @@ a {
   margin: clamp(2.5rem, 6vw, 4rem) 0;
   display: grid;
   gap: clamp(1.25rem, 3vw, 2rem);
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 860px) {
@@ -848,7 +848,7 @@ a {
 
 .spad__mood-callout {
   margin-top: 0;
-  align-self: center;
+  align-self: start;
   height: auto;
 }
 
