@@ -938,7 +938,7 @@ a {
   height: 1.45rem;
   margin-top: 0.05rem;
   border-radius: 50%;
-  background: var(--muted);
+  background: var(--red);
   color: #fff;
   font-size: 12px;
   font-weight: 700;
