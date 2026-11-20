@@ -825,9 +825,9 @@ a {
   .spad__chain {
     display: block;
     margin: 0.35rem 0 1.1rem;
-    color: var(--muted);
+    color: var(--text);
     font-size: inherit;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 1.55;
   }
 
@@ -845,7 +845,7 @@ a {
     background: none;
     box-shadow: none;
     font-size: inherit;
-    font-weight: 400;
+    font-weight: 700;
     color: inherit;
     text-align: left;
   }
