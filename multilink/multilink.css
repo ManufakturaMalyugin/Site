@@ -70,15 +70,17 @@ body.ml {
   width: 6.25rem;
   height: 6.25rem;
   border-radius: 50%;
+  overflow: hidden;
   background: var(--ml-red);
   box-shadow: 0 16px 40px rgba(254, 81, 73, 0.28);
   animation: ml-rise 0.7s var(--ml-ease) both;
 }
 
 .ml__avatar img {
-  width: 68%;
-  height: auto;
-  filter: brightness(0) invert(1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .ml__brand {
@@ -144,21 +146,13 @@ body.ml {
 }
 
 .ml__icon {
-  display: grid;
-  place-items: center;
   width: 2.45rem;
   height: 2.45rem;
   border-radius: 50%;
-  color: #fff;
+  object-fit: cover;
+  display: block;
   flex-shrink: 0;
 }
-
-.ml__icon--site { background: var(--ml-red); }
-.ml__icon--tg { background: #2aabee; }
-.ml__icon--max { background: linear-gradient(135deg, #6c5ce7, #4b7bec); }
-.ml__icon--vk { background: #0077ff; }
-.ml__icon--rutube { background: #1a1a1a; }
-.ml__icon--ig { background: linear-gradient(135deg, #f58529, #dd2a7b 50%, #8134af); }
 
 .ml__label {
   font-size: 0.98rem;
