@@ -1,0 +1,31 @@
+.spad__byline {
+  display: grid;
+  gap: 0.2rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.15rem 0 0;
+  padding: 0.85rem 1.1rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.spad__byline-role {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--red);
+  line-height: 1.35;
+}
+
+.spad__byline-name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text);
+}
