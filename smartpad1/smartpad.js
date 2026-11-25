@@ -23,24 +23,44 @@
     return lang === "en" ? "en" : "ru";
   }
 
+  function isEnPage() {
+    const path = location.pathname.replace(/\\/g, "/").toLowerCase();
+    if (/\/smartpad1\/en(?:\/|$)/.test(path)) {
+      return true;
+    }
+    if (location.protocol === "file:") {
+      return /\/en\/(?:index\.html)?$/i.test(path);
+    }
+    return document.documentElement.lang === "en";
+  }
+
+  function pageLang() {
+    return isEnPage() ? "en" : "ru";
+  }
+
   function langHref(code) {
     const lang = normalizeLang(code);
+    const hash = location.hash || "";
+    const onEn = isEnPage();
 
     if (location.protocol === "file:") {
-      return lang === "en" ? "../smartpad/en/index.html" : "index.html";
+      if (onEn) {
+        return (lang === "en" ? "index.html" : "../index.html") + hash;
+      }
+      return (lang === "en" ? "en/index.html" : "index.html") + hash;
     }
 
-    const path = lang === "en" ? "/smartpad/en/" : "/smartpad1/";
-    return new URL(path, location.origin).href;
+    const path = lang === "en" ? "/smartpad1/en/" : "/smartpad1/";
+    return new URL(path, location.origin).href + hash;
   }
 
   document.querySelectorAll(".spad__lang-select").forEach((select) => {
-    select.value = "ru";
+    select.value = pageLang();
 
     select.addEventListener("change", () => {
       const lang = normalizeLang(select.value);
-      if (lang === "ru") {
-        select.value = "ru";
+      if (lang === pageLang()) {
+        select.value = pageLang();
         return;
       }
       location.assign(langHref(lang));
