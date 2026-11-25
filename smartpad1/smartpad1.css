@@ -8,8 +8,9 @@
   width: 100%;
   max-width: 36rem;
   margin: 1.15rem 0 0;
-  padding: 1rem 0 0;
+  padding: 1rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .spad__byline-name {
@@ -18,7 +19,7 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.3;
-  color: var(--text);
+  color: var(--red);
 }
 
 .spad__byline-meta {
