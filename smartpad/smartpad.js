@@ -29,39 +29,29 @@
       return true;
     }
     if (location.protocol === "file:") {
-      return /\/en\/[^/]*$/i.test(path);
+      return /\/en\/(?:index\.html)?$/i.test(path);
     }
-    return false;
+    return document.documentElement.lang === "en";
   }
 
   function pageLang() {
     return isEnPage() ? "en" : "ru";
   }
 
-  function smartpadRoot() {
-    const path = location.pathname.replace(/\\/g, "/");
-    const marker = "/smartpad";
-    const idx = path.toLowerCase().indexOf(marker);
-    if (idx === -1) {
-      return null;
-    }
-    return path.slice(0, idx + marker.length);
-  }
-
   function langHref(code) {
     const lang = normalizeLang(code);
+    const hash = location.hash || "";
     const onEn = isEnPage();
 
     if (location.protocol === "file:") {
-      if (lang === "ru") {
-        return onEn ? "../index.html" : "index.html";
+      if (onEn) {
+        return (lang === "en" ? "index.html" : "../index.html") + hash;
       }
-      return onEn ? "index.html" : "en/index.html";
+      return (lang === "en" ? "en/index.html" : "index.html") + hash;
     }
 
-    const root = smartpadRoot();
-    const path = lang === "en" ? `${root || "/smartpad"}/en/` : `${root || "/smartpad"}/`;
-    return new URL(path, location.origin).href;
+    const path = lang === "en" ? "/smartpad/en/" : "/smartpad/";
+    return new URL(path, location.origin).href + hash;
   }
 
   document.querySelectorAll(".spad__lang-select").forEach((select) => {
